@@ -38,10 +38,7 @@
   "C_Cpp_Runner.compilerArgs": [],
   "C_Cpp_Runner.linkerArgs": [],
   "C_Cpp_Runner.includePaths": [],
-  "C_Cpp_Runner.includeSearch": [
-    "*",
-    "**/*"
-  ],
+  "C_Cpp_Runner.includeSearch": ["*", "**/*"],
   "C_Cpp_Runner.excludeSearch": [
     "**/build",
     "**/build/**",
@@ -137,5 +134,108 @@
     "linkedqueue2.h": "c",
     "tree.h": "c"
   },
-  "C_Cpp.errorSquiggles": "enabled"
+  "C_Cpp.errorSquiggles": "enabled",
+
+  "workbench.colorCustomizations": {
+    "editor.background": "#000000"
+  },
+  "editor.semanticHighlighting.enabled": false,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        // 🖤 الخلفية سوداء جدًا
+        "scope": [],
+        "settings": {
+          "foreground": "#000000"
+        }
+      },
+      {
+        // 🔴 كل الـ special operators
+        "scope": [
+          "keyword.operator",
+
+          "keyword.operator.arithmetic",
+          "keyword.operator.comparison",
+          "keyword.operator.logical",
+          "keyword.operator.bitwise",
+          "keyword.operator.increment-decrement",
+          "keyword.operator.relational",
+          "keyword.operator.other",
+          "punctuation.definition.operator.arrow",
+          "keyword.control.import.include",
+        
+          "punctuation.definition.directive",
+          "punctuation.accessor"
+        ],
+        "settings": {
+          "foreground": "#FF0000"
+        }
+      },
+      {
+        // 🤍 الرموز البسيطة (, : ; # @ .)
+        "scope": [
+          "punctuation.separator.comma", // ,
+          "punctuation.separator.colon", // :
+          "punctuation.terminator.statement", // ;
+          "punctuation.definition.preprocessor", // #
+          "meta.preprocessor.include", // #include ""
+          "entity.name.namespace", // ::
+          "punctuation.separator", // fallback
+          "meta.brace.square" // [ ]
+        ],
+        "settings": {
+          "foreground": "#FFFFFF"
+        }
+      },
+      {
+        // 🤍 أسماء المتغيرات
+        "scope": [
+          "variable",
+          "variable.parameter",
+          "variable.other",
+          "meta.definition.variable.name",
+          "meta.definition.parameter.name"
+        ],
+        "settings": {
+          "foreground": "#FFFFFF"
+        }
+      },
+      {
+        // 💜 escape sequences زي \n \t \r
+        "scope": ["constant.character.escape"],
+        "settings": {
+          "foreground": "#B266FF"
+        }
+      },
+      {
+        "scope": ["keyword.operator.assignment"],
+        "settings": {
+          "foreground": "#669cff"
+        }
+      },
+      // More rules can be added here
+      //الارقام 🤍
+      {
+        "scope": [
+          "constant.numeric",
+          "constant.numeric.integer",
+          "constant.numeric.float",
+          "constant.numeric.hexadecimal",
+          "constant.numeric.octal",
+          "constant.numeric.binary"
+        ],
+        "settings": {
+          "foreground": "#B266FF"
+        }
+      },
+      // التعليقات 💚
+      {
+        "scope": ["comment", "punctuation.definition.comment"],
+        "settings": {
+          "foreground": "#ff9100",
+          "fontStyle": "italic"
+        }
+      }
+    ]
+  }
 }

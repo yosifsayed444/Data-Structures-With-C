@@ -5,7 +5,7 @@ typedef struct
 {
     int top;
     type items[MAX];
-}Stack;
+} Stack;
 void createStack(Stack *s)
 {
     s->top = -1;
@@ -33,7 +33,7 @@ void push(type item, Stack *s)
 }
 type pop(Stack *s)
 {
-    type item;
+    type item ;
 
     if (isstackempty(*s))
     {

@@ -4,18 +4,18 @@ int main()
 {
     struct B
     {
-        char c1;
-        char c2;
-        int n;
+        int x;
+        float y;
+        char z;
+        double a;
     };
 
     struct D
     {
         char x;
+        float a;
         struct B y;
-        float z;
     };
 
     printf("size of structure : %d", sizeof(struct D));
-    
 }
