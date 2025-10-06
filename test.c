@@ -17,6 +17,5 @@ int main()
     };
 
     printf("size of structure : %d", sizeof(struct D));
-
     
 }
