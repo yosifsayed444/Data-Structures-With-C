@@ -1,104 +1,103 @@
 #include <stdio.h>
 typedef int type;
 #define MAX 100
+
 typedef struct
 {
     int top;
     type items[MAX];
 } Stack;
+
 void createStack(Stack *s)
 {
     s->top = -1;
 }
+
 int isstackempty(Stack s)
 {
     return s.top == -1;
 }
+
 int isstackfull(Stack s)
 {
     return s.top == MAX - 1;
 }
+
 void push(type item, Stack *s)
 {
     if (isstackfull(*s))
-    {
-        printf("Stack Over Flow \n");
-    }
+        printf("Stack Over Flow\n");
     else
-    {
-        s->top++;
-        s->items[s->top] = item;
-    }
+        s->items[++s->top] = item;
 }
+
 type pop(Stack *s)
 {
-    type item;
     if (isstackempty(*s))
     {
-        printf("Stack UnderFlow \n");
+        printf("Stack UnderFlow\n");
         return 0;
     }
-    else
-    {
-        item = s->items[s->top];
-        s->top--;
-    }
-    return item;
+    return s->items[s->top--];
 }
-void Pop(type *item, Stack *s)
-{
-    if (isstackempty(*s))
-    {
-        printf("Stack UnderFlow \n");
-    }
-    else
-    {
-        *item = s->items[s->top--];
-    }
-}
-type peeklast(Stack s)
+
+type peekTop(Stack s)
 {
     if (!isstackempty(s))
         return s.items[s.top];
     else
-        printf("stack over flow ");
+    {
+        printf("Stack is empty!\n");
+        return 0;
+    }
 }
-type peekfirst(Stack s)
+
+type peekBottom(Stack s)
 {
     if (!isstackempty(s))
         return s.items[0];
     else
-        printf("stack over flow ");
-}
-int size(Stack s)
-{
-    if (isstackempty(s))
     {
+        printf("Stack is empty!\n");
         return 0;
     }
-    return s.top + 1;
+}
+
+int size(Stack s)
+{
+    return isstackempty(s) ? 0 : s.top + 1;
 }
 
 void distroyStack(Stack *s)
 {
     s->top = -1;
 }
+
 void copyStack(Stack old, Stack *s)
 {
     s->top = old.top;
-    for (int i = 0; i <= s->top; i++)
+    for (int i = 0; i <= old.top; i++)
         s->items[i] = old.items[i];
 }
+
 void printStack(Stack s)
 {
     printf("[Top -> Bottom] ");
     while (!isstackempty(s))
-    {
         printf("%d ", pop(&s));
-    }
     printf("\n");
 }
+
 void reverseStack(Stack *s)
+{
+    Stack temp;
+    createStack(&temp);
+    while (!isstackempty(*s))
+        push(pop(s), &temp);
+    *s = temp;
+}
+
+void SortStack(Stack *s)
 {
     Stack temp;
     createStack(&temp);
@@ -106,22 +105,74 @@ void reverseStack(Stack *s)
     while (!isstackempty(*s))
     {
         int item = pop(s);
+        while (!isstackempty(temp) && peekTop(temp) > item)
+            push(pop(&temp), s);
         push(item, &temp);
     }
     *s = temp;
 }
-void SortStack(Stack *s)
+
+int isStackEqual(Stack a, Stack b)
 {
-    Stack temp;
-    createStack(&temp);
-    while (!isstackempty(*s))
+    if (a.top != b.top)
+        return 0;
+    for (int i = 0; i <= a.top; i++)
     {
-        int item = pop(s);
-        while (!isstackempty(temp) && peeklast(temp) > item)
-        {
-            push(pop(&temp), s);
-        }
-        push(item, &temp);
+        if (a.items[i] != b.items[i])
+            return 0;
     }
-    *s = temp;
+    return 1;
+}
+
+int searchStack(Stack s, int value)
+{
+    for (int i = 0; i <= s.top; i++)
+        if (s.items[i] == value)
+            return i;
+    return -1;
+}
+void traverseStack(Stack s, void (*func)(type *))
+{
+    for (int i = s.top; i >= 0; i--)
+    {
+        func(&s.items[i]);
+    }
+}
+int maxInStack(Stack s)
+{
+    if (isstackempty(s))
+    {
+        printf("Stack is empty!\n");
+        return -1;
+    }
+    int max = s.items[0];
+    for (int i = 1; i <= s.top; i++)
+        if (s.items[i] > max)
+            max = s.items[i];
+    return max;
+}
+
+int minInStack(Stack s)
+{
+    if (isstackempty(s))
+    {
+        printf("Stack is empty!\n");
+        return -1;
+    }
+    int min = s.items[0];
+    for (int i = 1; i <= s.top; i++)
+        if (s.items[i] < min)
+            min = s.items[i];
+    return min;
+}
+
+Stack mergeStacks(Stack a, Stack b)
+{
+    Stack result;
+    createStack(&result);
+    for (int i = 0; i <= a.top; i++)
+        push(a.items[i], &result);
+    for (int i = 0; i <= b.top; i++)
+        push(b.items[i], &result);
+    return result;
 }
