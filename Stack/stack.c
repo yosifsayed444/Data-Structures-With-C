@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "stack.h" // لو حاطط الكود في ملف تاني، أو شيله لو كله في ملف واحد
+#include "stack.h" 
 
 void printItem(int *x)
 {
