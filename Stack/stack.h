@@ -1,6 +1,6 @@
 #include <stdio.h>
 typedef int type;
-#define MAX 10
+#define MAX 10000
 typedef struct
 {
     int top;
@@ -33,7 +33,7 @@ void push(type item, Stack *s)
 }
 type pop(Stack *s)
 {
-    type item ;
+    type item;
 
     if (isstackempty(*s))
     {
