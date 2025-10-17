@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "stack.h" 
+#include "stack.h"
+#define MAX 100
 
 void printItem(int *x)
 {
@@ -30,7 +31,7 @@ int main()
     push(3, &s1);
     push(7, &s1);
     printStack(s1);
-    SortStack(&s1);
+  SortStack(&s1);
     printStack(s1);
 
     printf("\n=== Check if Equal ===\n");
@@ -65,6 +66,22 @@ int main()
     printf("\n=== Destroy Stack ===\n");
     distroyStack(&s1);
     printf("s1 size after destroy = %d\n", size(s1));
+
+    printf("\n=== Infix to Postfix & Back to Infix ===\n");
+    char infixExp[MAX] = "3+4*2/(1-5)^2";
+    char postfixExp[MAX];
+    char backToInfix[MAX];
+
+    printf("Infix: %s\n", infixExp);
+
+    infixToPostfix(infixExp, postfixExp);
+    printf("Postfix: %s\n", postfixExp);
+
+    double result = evaluatePostfix(postfixExp);
+    printf("Result: %.2f\n", result);
+
+    postfixToInfix(postfixExp, backToInfix);
+    printf("Back to Infix: %s\n", backToInfix);
 
     printf("\n=== All Tests Done Successfully ===\n");
 
