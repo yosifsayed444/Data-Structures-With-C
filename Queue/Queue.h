@@ -5,7 +5,7 @@ typedef int type;
 typedef struct
 {
     int front;
-    int back;
+    int rear;
     int size;
     type arr[MAX1];
 } Queue;
@@ -13,7 +13,7 @@ typedef struct
 void createQueue(Queue *q)
 {
     q->front = 0;
-    q->back = MAX1 - 1;
+    q->rear = MAX1 - 1;
     q->size = 0;
 }
 int isqueueEmpty(Queue q)
@@ -32,8 +32,8 @@ void enqueue(Queue *q, type item)
     }
     else
     {
-        q->back = (q->back + 1) % MAX1;
-        q->arr[q->back] = item;
+        q->rear = (q->rear + 1) % MAX1;
+        q->arr[q->rear] = item;
         q->size++;
     }
 }
@@ -58,7 +58,7 @@ void traverseQueue(Queue *q, void (*func)(type *))
     while (1)
     {
         func(&q->arr[i]);
-        if (i == q->back)
+        if (i == q->rear)
             break;
         i = (i + 1) % MAX1;
     }
