@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "*.embeddedhtml": "html",
+    "*.c++": "cpp",
+    "stack.h": "c",
+    "linkedlist.h": "c"
+  }
+}

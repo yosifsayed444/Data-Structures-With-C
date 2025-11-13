@@ -143,27 +143,27 @@ tree *deleteNode(tree *t, int key)
         t->right = deleteNode(t->right, key);
     else
     {
-        // node with no child
+       
         if (t->left == NULL && t->right == NULL)
         {
             free(t);
             return NULL;
         }
-        // node with one child (right only)
+        
         else if (t->left == NULL)
         {
             tree *temp = t->right;
             free(t);
             return temp;
         }
-        // node with one child (left only)
+        
         else if (t->right == NULL)
         {
             tree *temp = t->left;
             free(t);
             return temp;
         }
-        // node with two children
+      
         else
         {
             tree *temp = findMin(t->right);

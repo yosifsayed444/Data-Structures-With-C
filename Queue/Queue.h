@@ -1,6 +1,6 @@
 #include <stdio.h>
 typedef int type;
-#define MAX1 3
+#define MAX1 100
 
 typedef struct
 {
@@ -52,14 +52,41 @@ type dequeue(Queue *q)
     }
     return item;
 }
-void traverseQueue(Queue *q, void (*func)(type *))
+void traverseQueue(Queue *q, void (*f)(type *))
 {
-    int i = q->front;
-    while (1)
+    int i, siz;
+    for (i = q->front, siz = 0; siz < q->size; siz++)
     {
-        func(&q->arr[i]);
-        if (i == q->rear)
-            break;
+        (*f)(&q->arr[i]);
         i = (i + 1) % MAX1;
     }
+}
+
+void searchq(Queue *q, type key)
+{
+    int found = 0;
+    int i, siz;
+    for (i = q->front, siz = 0; siz < q->size; siz++)
+    {
+
+        if (q->arr[i] == key)
+        {
+            printf("Element %d found in the queue\n", key);
+            return;
+        }
+        i = (i + 1) % MAX1;
+    }
+    printf("Element %d not found in the queue\n", key);
+}
+Queue MergeQueue(Queue q1, Queue q2)
+{
+    Queue q3;
+    createQueue(&q3);
+    while(!isqueueEmpty(q1) && !isqueueEmpty(q2)){
+        int SecCode=dequeue(&q1);
+        int GroupCode=dequeue(&q2);
+        int result = SecCode*10 + GroupCode;
+        enqueue(&q3,result);
+    }
+    return q3;
 }

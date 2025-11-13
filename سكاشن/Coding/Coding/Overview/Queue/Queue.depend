@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1698128723 source:e:\2023-2024\helwan\dscodes\queue\mainuserlevel.c
+	<stdio.h>
+	"queue.h"
+
+1697954660 e:\2023-2024\helwan\dscodes\queue\queue.h
+
+1697974777 source:e:\2023-2024\helwan\dscodes\queue\queue.c
+	<stdio.h>
+	<stdlib.h>
+	"queue.h"
+
+1698136027 source:e:\2023-2024\helwan\dscodes\queue\traversequeue.c
+	<stdio.h>
+	"queue.h"
+
+1697955681 source:e:\2023-2024\helwan\dscodes\queue\getfelelemt.c
+	<stdio.h>
+	"queue.h"
+
+1698128499 source:e:\2023-2024\helwan\dscodes\queue\merge2queues.c
+	<stdio.h>
+	"queue.h"
+
+1698134385 source:e:\2023-2024\helwan\dscodes\queue\getfelelemtuserlevel.c
+	<stdio.h>
+	"queue.h"
+

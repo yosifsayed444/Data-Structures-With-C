@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1698835334 source:e:\2023-2024\helwan\dscodes\linkedqueue\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	"linkedlist.h"
+
+1698835360 e:\2023-2024\helwan\dscodes\linkedqueue\linkedlist.h
+
+1698858924 source:e:\2023-2024\helwan\dscodes\linkedqueue\mainuserlevel.c
+	<stdio.h>
+	"queue.h"
+
+1698839731 e:\2023-2024\helwan\dscodes\linkedqueue\queue.h
+
+1698858914 source:e:\2023-2024\helwan\dscodes\linkedqueue\queue.c
+	<stdio.h>
+	<stdlib.h>
+	"queue.h"
+

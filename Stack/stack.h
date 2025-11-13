@@ -5,8 +5,7 @@
 #include <ctype.h>
 #define MAX 100
 typedef int type;
-
-typedef struct
+typedef struct stack
 {
     int top;
     type items[MAX];
@@ -108,8 +107,9 @@ void SortStack(Stack *s)
     while (!isstackempty(*s))
     {
         int item = pop(s);
-        while (!isstackempty(temp) && peekTop(temp) > item)
+        while (!isstackempty(temp) && peekTop(temp) > item){
             push(pop(&temp), s);
+        }
         push(item, &temp);
     }
     *s = temp;
@@ -134,11 +134,11 @@ int searchStack(Stack s, int value)
             return i;
     return -1;
 }
-void traverseStack(Stack s, void (*func)(type *))
+void traverseStack(Stack s, void (*f)(type *))
 {
     for (int i = s.top; i >= 0; i--)
     {
-        func(&s.items[i]);
+        f(&s.items[i]);
     }
 }
 int maxInStack(Stack s)
@@ -149,9 +149,10 @@ int maxInStack(Stack s)
         return -1;
     }
     int max = s.items[0];
-    for (int i = 1; i <= s.top; i++)
+    for (int i = 1; i <= s.top; i++){
         if (s.items[i] > max)
             max = s.items[i];
+    }
     return max;
 }
 

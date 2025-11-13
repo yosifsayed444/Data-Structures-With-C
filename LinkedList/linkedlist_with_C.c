@@ -5,18 +5,17 @@ int main()
 {
     linkedlist l;
     createList(&l);
-    insertNode(0, 10, &l);
-    insertNode(1, 20, &l);
-    insertNode(2, 30, &l);
-    insertNode(3, 40, &l);
-    insertNode(4, 50, &l);
-    int item = retrieveList(&l, 3);
+    insertNodeAtPosition(0, 10, &l);
+    insertNodeAtPosition(1, 20, &l);
+    insertNodeAtPosition(2, 30, &l);
+    insertNodeAtPosition(4, 40, &l);
+    insertNodeAtPosition(3, 50, &l);
+    insertNodeintoTail(60, &l);
+    displayLinkedlist(&l);
+    int item = retrieveAtPosition(&l, 3);
     printf("deleted item is %d\n", item);
     displayLinkedlist(&l);
     reverseLinkedlist(&l);
-
-    // if (isEmpty(&l))
-    // {
-    //     printf("list is empty\n");
-    // }
+    clearList(&l);
+    displayLinkedlist(&l);
 }

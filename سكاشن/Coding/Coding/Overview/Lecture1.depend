@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1695621126 source:e:\2023-2024\helwan\dscodes\lecture1\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1696694969 source:e:\2023-2024\helwan\dscodes\lecture1\spacecomp.c
+	<stdio.h>
+
+1696916358 source:e:\2023-2024\helwan\dscodes\lecture1\dynamicmemory.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+
+1696922587 source:e:\2023-2024\helwan\dscodes\lecture1\staticmemory.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+
+1696922128 source:e:\2023-2024\helwan\dscodes\lecture1\primitivetype.c
+	<stdio.h>
+

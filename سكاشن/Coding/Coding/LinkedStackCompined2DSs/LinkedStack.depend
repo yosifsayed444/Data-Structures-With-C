@@ -1,0 +1,57 @@
+# depslib dependency file v1.0
+1698829880 source:e:\2023-2024\helwan\dscodes\linkedstack\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	"linkedlist.h"
+
+1698829887 e:\2023-2024\helwan\dscodes\linkedstack\linkedlist.h
+
+1698830234 source:e:\2023-2024\helwan\dscodes\linkedstack\main.c
+	<stdio.h>
+	<stdlib.h>
+	"stack.h"
+
+1698827601 e:\2023-2024\helwan\dscodes\linkedstack\stack.h
+	"linkedList.h"
+
+1698738987 source:e:\2023-2024\helwan\dscodes\linkedstack\utility.c
+	<stdio.h>
+	<stdlib.h>
+	"Utility.h"
+
+1698662867 e:\2023-2024\helwan\dscodes\linkedstack\utility.h
+	"linkedList.h"
+
+1698830146 source:e:\2023-2024\helwan\dscodes\linkedstack\stack.c
+	<stdio.h>
+	"stack.h"
+	"linkedList.h"
+
+1698829880 source:e:\2023-2024\helwan\dscodes\linkedstackcompined2dss\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	"linkedlist.h"
+
+1698829887 e:\2023-2024\helwan\dscodes\linkedstackcompined2dss\linkedlist.h
+
+1698830263 source:e:\2023-2024\helwan\dscodes\linkedstackcompined2dss\main.c
+	<stdio.h>
+	<stdlib.h>
+	"stack.h"
+
+1698827601 e:\2023-2024\helwan\dscodes\linkedstackcompined2dss\stack.h
+	"linkedList.h"
+
+1698830146 source:e:\2023-2024\helwan\dscodes\linkedstackcompined2dss\stack.c
+	<stdio.h>
+	"stack.h"
+	"linkedList.h"
+
+1698738987 source:e:\2023-2024\helwan\dscodes\linkedstackcompined2dss\utility.c
+	<stdio.h>
+	<stdlib.h>
+	"Utility.h"
+
+1698662867 e:\2023-2024\helwan\dscodes\linkedstackcompined2dss\utility.h
+	"linkedList.h"
+

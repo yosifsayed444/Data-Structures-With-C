@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1695841290 source:e:\2023-2024\helwan\dscodes\tree\stack.c
+	<stdio.h>
+	"stack.h"
+
+1695841320 e:\2023-2024\helwan\dscodes\tree\stack.h
+
+1701763250 source:e:\2023-2024\helwan\dscodes\tree\main.c
+	<stdio.h>
+	<stdlib.h>
+	"tree.h"
+	"Utility.h"
+
+1701743272 e:\2023-2024\helwan\dscodes\tree\tree.h
+
+1701743721 source:e:\2023-2024\helwan\dscodes\tree\tree.c
+	<stdlib.h>
+	<math.h>
+	<stdio.h>
+	"tree.h"
+	"stack.h"
+
+1701763007 source:e:\2023-2024\helwan\dscodes\tree\bstmain.c
+	<stdio.h>
+	<stdlib.h>
+	"tree.h"
+	"Utility.h"
+
+1701689357 e:\2023-2024\helwan\dscodes\tree\utility.h
+
+1701688439 source:e:\2023-2024\helwan\dscodes\tree\utility.c
+	<stdio.h>
+	<stdlib.h>
+	"Utility.h"
+

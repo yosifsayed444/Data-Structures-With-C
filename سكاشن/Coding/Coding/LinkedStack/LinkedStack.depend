@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1698829880 source:e:\2023-2024\helwan\dscodes\linkedstack\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	"linkedlist.h"
+
+1698829887 e:\2023-2024\helwan\dscodes\linkedstack\linkedlist.h
+
+1698833280 source:e:\2023-2024\helwan\dscodes\linkedstack\main.c
+	<stdio.h>
+	<stdlib.h>
+	"stack.h"
+
+1698832959 e:\2023-2024\helwan\dscodes\linkedstack\stack.h
+
+1698833224 source:e:\2023-2024\helwan\dscodes\linkedstack\stack.c
+	<stdio.h>
+	"stack.h"
+
