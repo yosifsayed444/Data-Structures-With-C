@@ -7,6 +7,7 @@
     "linkedlist_with_c.h": "c",
     "stdio.h": "c",
     "global.h": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "linkedqueue1.h": "c"
   }
 }
