@@ -3,13 +3,11 @@
 #include "linkedStack2.h"
 
 typedef int typeL;
-
 typedef struct node
 {
     typeL value;
     struct node *next;
 } node;
-
 typedef struct linkedlist
 {
     node *head;
@@ -191,4 +189,12 @@ void reverseLinkedlist(linkedlist *l)
         printf("%d ", item);
     }
     printf("\n");
+}
+void traverseLinkedlist(linkedlist *l,void (*func)(typeL*)){
+    node *temp = l->head;
+    while (temp != NULL)
+    {
+        func(&temp->value);
+        temp = temp->next;
+    }
 }

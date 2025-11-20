@@ -3,7 +3,7 @@
 #include "Utility.h"
 
 
-int mainM()
+int main()
 {
     LinkedList* myList;
     createLinkedList(&myList,10);  // Create a linked list with a maximum size of 10
