@@ -1,0 +1,12 @@
+{
+  "files.associations": {
+    "*.embeddedhtml": "html",
+    "*.c++": "cpp",
+    "linkedstack2.h": "c",
+    "linkedstack1.h": "c",
+    "linkedlist_with_c.h": "c",
+    "stdio.h": "c",
+    "global.h": "c",
+    "stdlib.h": "c"
+  }
+}

@@ -1,18 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef int type;
-typedef struct node
-{
-    type value;
-    struct node *next;
-} node;
-typedef struct linkedlist
-{
-    node *head;
-    int size;
-} linkedlist;
-
+#include "global.h"
 node *createNode(type data)
 {
     node *newNode = (node *)malloc(sizeof(node));
@@ -21,23 +9,23 @@ node *createNode(type data)
     return newNode;
 }
 
-void createList(linkedlist *l)
+void createList(StackList1 *l)
 {
     l->head = NULL;
     l->size = 0;
 }
 
-int isEmpty(linkedlist *l)
+int isEmpty(StackList1 *l)
 {
     return l->head == NULL;
 }
 
-int isFull(linkedlist *l)
+int isFull(StackList1 *l)
 {
     return 0;
 }
 
-void insertNodeAtPosition(int pos, type data, linkedlist *l)
+void insertNodeAtPosition(int pos, type data, StackList1 *l)
 {
     node *newNode = createNode(data);
     if (l->head == NULL || pos == 0)
@@ -58,7 +46,7 @@ void insertNodeAtPosition(int pos, type data, linkedlist *l)
     l->size++;
 }
 
-void insertNodeintoTail(int data, linkedlist *l)
+void insertNodeintoTail(int data, StackList1 *l)
 {
     node *newNode = createNode(data);
     if (l->head == NULL)
@@ -77,7 +65,7 @@ void insertNodeintoTail(int data, linkedlist *l)
     l->size++;
 }
 
-type retrieveAtPosition(linkedlist *l, int pos)
+type retrieveAtPosition(StackList1 *l, int pos)
 {
     if (isEmpty(l))
     {
@@ -112,7 +100,7 @@ type retrieveAtPosition(linkedlist *l, int pos)
     return item;
 }
 
-type retrieveTail(linkedlist *l)
+type retrieveTail(StackList1 *l)
 {
     if (isEmpty(l))
     {
@@ -146,7 +134,7 @@ type retrieveTail(linkedlist *l)
     return item;
 }
 
-void clearList(linkedlist *l)
+void clearList(StackList1 *l)
 {
     node *temp;
     while (temp != NULL)
@@ -159,19 +147,27 @@ void clearList(linkedlist *l)
     l->size = 0;
 }
 
-void displayLinkedlist(linkedlist *l)
+void displayStackList1(StackList1 *s)
 {
-    node *temp = l->head;
-    while (temp != NULL)
+    if (isEmpty(s))
     {
-        printf("%d ->", temp->value);
-        temp = temp->next;
+        printf("Stack is empty\n");
+        return;
     }
-    printf("\n");
-    if(isEmpty(l))
-        printf("list is empty\n");
+
+    else
+    {
+        node *temp = s->head;
+        while (temp != NULL)
+        {
+            printf("%d ", temp->value);
+            temp = temp->next;
+        }
+        printf("\n");
+    }
 }
-void traverseLinkedlist(linkedlist *l,void (*func)(type*)){
+void traverseStackList(StackList1 *l, void (*func)(type *))
+{
     node *temp = l->head;
     while (temp != NULL)
     {
