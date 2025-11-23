@@ -15,7 +15,6 @@ int main()
     int item = retrieveAtPosition(&l, 3);
     printf("deleted item is %d\n", item);
     displayLinkedlist(&l);
-    reverseLinkedlist(&l);
     clearList(&l);
     displayLinkedlist(&l);
 }

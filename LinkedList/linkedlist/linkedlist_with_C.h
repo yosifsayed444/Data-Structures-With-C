@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "linkedStack2.h"
+
 
 typedef int typeL;
 typedef struct node
@@ -171,24 +171,6 @@ void displayLinkedlist(linkedlist *l)
     printf("\n");
     if(isEmpty(l))
         printf("list is empty\n");
-}
-
-void reverseLinkedlist(linkedlist *l)
-{
-    Stack s;
-    createStack(&s);
-    node *temp = l->head;
-    while (temp != NULL)
-    {
-        push(temp->value, &s);
-        temp = temp->next;
-    }
-    while (!isstackempty(s))
-    {
-        typeL item = pop(&s);
-        printf("%d ", item);
-    }
-    printf("\n");
 }
 void traverseLinkedlist(linkedlist *l,void (*func)(typeL*)){
     node *temp = l->head;

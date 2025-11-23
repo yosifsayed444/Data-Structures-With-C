@@ -2,7 +2,7 @@
   "files.associations": {
     "*.embeddedhtml": "html",
     "*.c++": "cpp",
-    "linkedstack2.h": "c",
-    "linkedlist_with_c.h": "c"
+    "linkedlist_with_c.h": "c",
+    "circularlinkedlist.h": "c"
   }
 }
