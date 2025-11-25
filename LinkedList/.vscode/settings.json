@@ -5,6 +5,9 @@
     "linkedlist_with_c.h": "c",
     "circularlinkedlist.h": "c",
     "doublysortedlinkedlist.h": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "global.h": "c",
+    "linkedqueue2.h": "c",
+    "linkedqueue1.h": "c"
   }
 }

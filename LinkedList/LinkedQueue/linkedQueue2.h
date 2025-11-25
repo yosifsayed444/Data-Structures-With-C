@@ -1,5 +1,18 @@
-#include "global.h"
 #include <stdio.h>
+#include <stdlib.h>
+typedef int type;
+typedef struct node
+{
+    type value;
+    struct node *next;
+} node;
+typedef struct linkedQueue2
+{
+    int data;
+    node *rear;
+    node *front;
+    int size;
+} linkedQueue2;
 node *createNode(type data)
 {
     node *newNode = (node *)malloc(sizeof(node));

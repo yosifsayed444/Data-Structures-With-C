@@ -1,55 +1,64 @@
 #include "linkedlist_with_C.h"
-void createlinkedQueue1(linkedQueue1 *l)
+typedef int type;
+typedef struct linkedQueue
 {
-    createList(l);
-}
-int isEmpty1(linkedQueue1 *l)
+    linkedlist l;
+} linkedQueue;
+void createlinkedQueue(linkedQueue *q)
 {
-    return isEmpty(l);
+    createList(&q->l);
 }
-int isFull1(linkedQueue1 *l)
+int isQueueEmpty(linkedQueue *q)
 {
-    return isFull(l);
+    return isEmpty(&q->l);
 }
-void enqueue1(type data, linkedQueue1 *l)
+int isQueueFull(linkedQueue *q)
 {
-   insertNodeAtPosition(l->size, data, l);
+    return isFull(&q->l);
 }
- type dequeue1(linkedQueue1 *l)
+void enqueue(type data, linkedQueue *q)
 {
-   return retrieveAtPosition(0, l);
+    insertNodeAtPosition(q->l.size, data, &q->l);
 }
-void displaylinkedQueue1(linkedQueue1 *l)
+
+type dequeue(linkedQueue *q)
 {
-    displaylinkedlist(l);
-}
-void clearlinkedQueue1(linkedQueue1 *l)
-{
-    clearlist(l);
-}
-void traverselinkedQueue1(linkedQueue1 *l,void (*func)(type*)){
-    traverselinkedlist(l,func);
-}
- type front1(linkedQueue1 *l)
-{
-    if (isEmpty(l))
+    if (isQueueEmpty(q))
     {
-        printf("QueuelinkedQueue1 is empty\n");
+        printf("Queue is empty\n");
         return -1;
     }
-    return l->head->value;
+    return retrieveAtPosition(&q->l, 0);
 }
- type rear1(linkedQueue1 *l)
+
+type front(linkedQueue *q)
 {
-    if (isEmpty(l))
+    if (isQueueEmpty(q))
     {
-        printf("QueuelinkedQueue1 is empty\n");
+        printf("Queue is empty\n");
         return -1;
     }
-    node *temp = l->head;
+    return q->l.head->value;
+}
+
+type rear(linkedQueue *q)
+{
+    if (isQueueEmpty(q))
+    {
+        printf("Queue is empty\n");
+        return -1;
+    }
+    node *temp = q->l.head;
     while (temp->next != NULL)
-    {
         temp = temp->next;
-    }
     return temp->value;
+}
+
+void traverselinkedQueue(linkedQueue *q, void (*func)(type *))
+{
+    traverseLinkedlist(&q->l, func);
+}
+void clearlinkedQueue(linkedQueue *q)
+{
+    clearList(&q->l);
 }

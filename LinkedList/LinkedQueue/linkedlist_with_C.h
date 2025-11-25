@@ -1,7 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "global.h"
-node *createNode(type data)
+
+typedef int typeL;
+typedef struct node
+{
+    typeL value;
+    struct node *next;
+} node;
+typedef struct linkedlist
+{
+    node *head;
+    int size;
+} linkedlist;
+
+node *createNode(typeL data)
 {
     node *newNode = (node *)malloc(sizeof(node));
     newNode->value = data;
@@ -9,72 +21,70 @@ node *createNode(type data)
     return newNode;
 }
 
-void createList(linkedQueue1 *l)
+void createList(linkedlist *l)
 {
     l->head = NULL;
     l->size = 0;
 }
 
-int isEmpty(linkedQueue1 *l)
+int isEmpty(linkedlist *l)
 {
     return l->head == NULL;
 }
 
-int isFull(linkedQueue1 *l)
+int isFull(linkedlist *l)
 {
     return 0;
 }
-
-void insertNodeAtPosition(int pos, type data, linkedQueue1 *l)
+void insertNodeAtPosition(int pos, int value,linkedlist *l)
 {
-    node *newNode = createNode(data);
-    if (l->head == NULL || pos == 0)
-    {
-        newNode->next = l->head;
-        l->head = newNode;
-    }
-    else
-    {
-        node *temp = l->head;
-        for (int i = 0; i < pos - 1 && temp->next != NULL; i++)
-        {
-            temp = temp->next;
-        }
-        newNode->next = temp->next;
-        temp->next = newNode;
-    }
-    l->size++;
-}
+    node *newNode = createNode(value);
 
-void insertNodeintoTail(int data, linkedQueue1 *l)
-{
-    node *newNode = createNode(data);
     if (l->head == NULL)
     {
         l->head = newNode;
+        l->head->next = NULL;
+        l->size++;
+        return;
+    }
+    node *temp = l->head;
+    if (pos == 0)
+    {
+        newNode->next = temp;
+        l->head = newNode;
+        l->size++;
+        return;
+    }
+
+    for (int i = 0; i < pos - 1 && temp->next != NULL; i++)
+    {
+        temp = temp->next;
+    }
+
+    if (temp->next == NULL)
+    {
+
+        temp->next = newNode;
+        newNode->next = NULL;
     }
     else
     {
-        node *temp = l->head;
-        while (temp->next != NULL)
-        {
-            temp = temp->next;
-        }
+        newNode->next = temp->next;
         temp->next = newNode;
     }
+
     l->size++;
 }
-
-type retrieveAtPosition( int pos,linkedQueue1 *l)
+typeL retrieveAtPosition(linkedlist *l, int pos)
 {
     if (isEmpty(l))
     {
-        printf("QueuelinkedQueue1 is empty\n");
+        printf("List is empty\n");
         return -1;
     }
 
     node *temp = l->head;
-    type item;
+    typeL item;
 
     if (pos == 0)
     {
@@ -99,42 +109,7 @@ type retrieveAtPosition( int pos,linkedQueue1 *l)
     l->size--;
     return item;
 }
-
-type retrieveTail(linkedQueue1 *l)
-{
-    if (isEmpty(l))
-    {
-        printf("QueuelinkedQueue1 is empty\n");
-        return -1;
-    }
-
-    node *temp = l->head;
-    type item;
-
-    if (temp->next == NULL) // only one node
-    {
-        item = temp->value;
-        free(temp);
-        l->head = NULL;
-    }
-    else
-    {
-        node *prev = NULL;
-        while (temp->next != NULL)
-        {
-            prev = temp;
-            temp = temp->next;
-        }
-        item = temp->value;
-        free(temp);
-        prev->next = NULL;
-    }
-
-    l->size--;
-    return item;
-}
-
-void clearlist(linkedQueue1 *l)
+void clearList(linkedlist *l)
 {
     node *temp;
     while (temp != NULL)
@@ -146,20 +121,8 @@ void clearlist(linkedQueue1 *l)
     l->head = NULL;
     l->size = 0;
 }
-
-void displaylinkedlist(linkedQueue1 *l)
+void traverseLinkedlist(linkedlist *l, void (*func)(typeL *))
 {
-    node *temp = l->head;
-    while (temp != NULL)
-    {
-        printf("%d ->", temp->value);
-        temp = temp->next;
-    }
-    printf("\n");
-    if(isEmpty(l))
-        printf("linkedQueue1 is empty\n");
-}
-void traverselinkedlist(linkedQueue1 *l,void (*func)(type*)){
     node *temp = l->head;
     while (temp != NULL)
     {
