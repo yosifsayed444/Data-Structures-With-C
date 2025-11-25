@@ -3,6 +3,8 @@
     "*.embeddedhtml": "html",
     "*.c++": "cpp",
     "linkedlist_with_c.h": "c",
-    "circularlinkedlist.h": "c"
+    "circularlinkedlist.h": "c",
+    "doublysortedlinkedlist.h": "c",
+    "stdlib.h": "c"
   }
 }

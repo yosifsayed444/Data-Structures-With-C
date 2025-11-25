@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "linkedlist_with_C.h"
+
+void print(int *x)
+{
+    printf("Value: %d ->", *x);
+}
 int main()
 {
     linkedlist l;
@@ -10,11 +15,10 @@ int main()
     insertNodeAtPosition(2, 30, &l);
     insertNodeAtPosition(4, 40, &l);
     insertNodeAtPosition(3, 50, &l);
-    insertNodeintoTail(60, &l);
-    displayLinkedlist(&l);
+    traverseLinkedlist(&l, print);
     int item = retrieveAtPosition(&l, 3);
     printf("deleted item is %d\n", item);
-    displayLinkedlist(&l);
+    traverseLinkedlist(&l, print);
     clearList(&l);
-    displayLinkedlist(&l);
+    traverseLinkedlist(&l, print);
 }

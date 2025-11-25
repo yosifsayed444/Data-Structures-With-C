@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.embeddedhtml": "html",
+    "*.c++": "cpp",
+    "circularlinkedlist.h": "c"
+  }
+}

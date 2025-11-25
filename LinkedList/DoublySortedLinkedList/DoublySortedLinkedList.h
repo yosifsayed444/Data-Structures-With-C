@@ -1,82 +1,88 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef int type;
-
 typedef struct node
 {
+    int key;
     int value;
     struct node *next;
     struct node *prev;
 } node;
 
-typedef struct DoublyLinkedList
+typedef struct DoublySortedLinkedList
 {
     node *head;
     int size;
-} DoublyLinkedList;
+} DoublySortedLinkedList;
 
-void CreateDoublyLinkedList(DoublyLinkedList *l)
+void CreateDoublySortedLinkedList(DoublySortedLinkedList *l)
 {
     l->head = NULL;
     l->size = 0;
 }
 
-node *createNode(int value)
+node *createNode(int key, int value)
 {
     node *newNode = (node *)malloc(sizeof(node));
+    newNode->key = key;
     newNode->value = value;
     newNode->next = NULL;
     newNode->prev = NULL;
     return newNode;
 }
 
-int isEmpty(DoublyLinkedList *l)
+int isEmpty(DoublySortedLinkedList *l)
 {
     return l->head == NULL;
 }
 
-int getSize(DoublyLinkedList *l)
+int getSize(DoublySortedLinkedList *l)
 {
     return l->size;
 }
-int isFull(DoublyLinkedList *l)
+int isFull(DoublySortedLinkedList *l)
 {
     return 0;
 }
 
-void insertAtPosition(DoublyLinkedList *l, int value, int pos)
+void insertUniquelySortedByKey(DoublySortedLinkedList *l, int key, int value)
 {
-    if (pos < 0 || pos > l->size)
+    node *curr = l->head;
+    while (curr != NULL)
     {
-        printf("Position out of range\n");
-        return;
+        if (curr->value == value)
+        {
+            return;
+        }
+        else if (curr->key == key)
+        {
+            curr->value = value;
+            return;
+        }
+        curr = curr->next;
     }
-
-    node *newNode = createNode(value);
-
+    node *newNode = createNode(key, value);
     if (l->head == NULL)
     {
         l->head = newNode;
-        l->head->next = NULL;
-        l->head->prev = NULL;
         l->size++;
         return;
     }
+
     node *temp = l->head;
-    if (pos == 0)
+    if (key < temp->key)
     {
         newNode->next = temp;
         temp->prev = newNode;
         l->head = newNode;
-        l->head->prev = NULL;
         l->size++;
         return;
     }
 
-    for (int i = 0; i < pos - 1; i++)
+    while (temp->next != NULL && temp->next->key < key)
+    {
         temp = temp->next;
-
+    }
     if (temp->next == NULL)
     {
         temp->next = newNode;
@@ -94,26 +100,22 @@ void insertAtPosition(DoublyLinkedList *l, int value, int pos)
     l->size++;
 }
 
-type RetrieveAtPosition(DoublyLinkedList *l, int pos)
+int retrieveByKey(DoublySortedLinkedList *l, int key)
 {
-    if (pos < 0 || pos >= l->size)
-    {
-        printf("Position out of range\n");
-        return -999;
-    }
-
     if (l->head == NULL)
-    {
-        printf("List is empty\n");
-        return -1;
-    }
+        return -999;
 
     node *temp = l->head;
 
-    for (int i = 0; i < pos; i++)
+    while (temp != NULL && temp->key != key)
+    {
         temp = temp->next;
+    }
 
-    type value = temp->value;
+    if (temp == NULL)
+        return -999;
+
+    int value = temp->value;
 
     if (temp->prev == NULL)
     {
@@ -136,17 +138,17 @@ type RetrieveAtPosition(DoublyLinkedList *l, int pos)
     return value;
 }
 
-void traverseListforward(DoublyLinkedList *l, void (*func)(int))
+void traverseListforward(DoublySortedLinkedList *l, void (*func)(int, int))
 {
     node *temp = l->head;
     while (temp != NULL)
     {
-        func(temp->value);
+        func(temp->key, temp->value);
         temp = temp->next;
     }
 }
 
-void traverseListbackward(DoublyLinkedList *l, void (*func)(int))
+void traverseListbackward(DoublySortedLinkedList *l, void (*func)(int, int))
 {
     node *temp = l->head;
     if (temp == NULL)
@@ -158,12 +160,11 @@ void traverseListbackward(DoublyLinkedList *l, void (*func)(int))
     }
     while (temp != NULL)
     {
-        func(temp->value);
+        func(temp->key, temp->value);
         temp = temp->prev;
     }
 }
-
-void freeList(DoublyLinkedList *l)
+void freeList(DoublySortedLinkedList *l)
 {
     node *temp = l->head;
 
@@ -175,4 +176,17 @@ void freeList(DoublyLinkedList *l)
     }
     l->head = NULL;
     l->size = 0;
+}
+int search(DoublySortedLinkedList *l, int key)
+{
+    node *temp = l->head;
+    while (temp != NULL)
+    {
+        if (temp->key == key)
+        {
+            return temp->value;
+        }
+        temp = temp->next;
+    }
+    return -1;
 }
