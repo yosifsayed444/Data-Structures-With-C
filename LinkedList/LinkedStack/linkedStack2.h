@@ -1,14 +1,21 @@
 #include <stdio.h>
-#include "global.h"
+#include <stdlib.h>
+
+typedef int type;
+typedef struct node
+{
+    type value;
+    struct node *next;
+} node;
+typedef struct StackList2
+{
+    node *top;
+    int size;
+} StackList2;
+
 node *createNode(type data)
 {
     node *newNode = (node *)malloc(sizeof(node));
-    if (!newNode)
-    {
-        printf("Memory allocation failed\n");
-        exit(1);
-    }
-
     newNode->value = data;
     newNode->next = NULL;
     return newNode;

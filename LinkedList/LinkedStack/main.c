@@ -14,27 +14,26 @@ int main()
     createStack1(&s1);
     printf("============= Testing StackList1 ============\n");
     printf("=== Testing push ===\n");
-    push1(10, &s1);
-    push1(20, &s1);
-    push1(30, &s1);
-    push1(40, &s1);
-    push1(50, &s1);
-    push1(60, &s1);
-    push1(70, &s1);
-    displayStack1(&s1);
+    push(10, &s1);
+    push(20, &s1);
+    push(30, &s1);
+    push(40, &s1);
+    push(50, &s1);
+    push(60, &s1);
+    push(70, &s1);
+    traverseStackList(&s1, print);
     printf("\n=== Testing peek ===\n");
     printf("Top element = %d\n", peek1(&s1));
+    traverseStackList(&s1, print);
 
     printf("\n=== Testing pop ===\n");
     printf("Popped = %d\n", pop1(&s1));
-    displayStack1(&s1);
 
     printf("\n=== Testing traverse ===\n");
-    traverseStackList1(&s1, print);
+    traverseStackList(&s1, print);
 
     printf("\n=== Testing clearStack ===\n");
-    clearStack1(&s1);
-    displayStack1(&s1);
+    clearStack(&s1);
     // printf("\n============= Testing StackList2 ============\n");  
     // StackList2 s2;
     // createStack(&s2);

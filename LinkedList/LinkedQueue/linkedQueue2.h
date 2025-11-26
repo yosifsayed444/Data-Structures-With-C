@@ -13,6 +13,7 @@ typedef struct linkedQueue2
     node *front;
     int size;
 } linkedQueue2;
+
 node *createNode(type data)
 {
     node *newNode = (node *)malloc(sizeof(node));

@@ -86,6 +86,9 @@ void clear(tree **t)
     free(*t);
     *t = NULL;
 }
+
+
+//BST
 void insert(tree **t, int item)
 {
     if (*t == NULL)

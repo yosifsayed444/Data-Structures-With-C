@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef int typeL;
+typedef int type;
 typedef struct node
 {
-    typeL value;
+    type value;
     struct node *next;
 } node;
 typedef struct linkedlist
@@ -13,7 +12,7 @@ typedef struct linkedlist
     int size;
 } linkedlist;
 
-node *createNode(typeL data)
+node *createNode(type data)
 {
     node *newNode = (node *)malloc(sizeof(node));
     newNode->value = data;
@@ -36,7 +35,7 @@ int isFull(linkedlist *l)
 {
     return 0;
 }
-void insertNodeAtPosition(int pos, int value,linkedlist *l)
+void insertNodeAtPosition(int pos, int value, linkedlist *l)
 {
     node *newNode = createNode(value);
 
@@ -75,7 +74,7 @@ void insertNodeAtPosition(int pos, int value,linkedlist *l)
 
     l->size++;
 }
-typeL retrieveAtPosition(linkedlist *l, int pos)
+type retrieveAtPosition(linkedlist *l, int pos)
 {
     if (isEmpty(l))
     {
@@ -84,28 +83,21 @@ typeL retrieveAtPosition(linkedlist *l, int pos)
     }
 
     node *temp = l->head;
-    typeL item;
+    node *prev = NULL;
+    type item;
 
-    if (pos == 0)
+    for (int i = 0; i < pos && temp->next != NULL; i++)
     {
-        l->head = l->head->next;
-        item = temp->value;
-        free(temp);
+        prev = temp;
+        temp = temp->next;
     }
+    if (prev == NULL)
+        l->head = temp->next;
     else
-    {
-        node *prev = NULL;
-        for (int i = 0; i < pos && temp->next != NULL; i++)
-        {
-            prev = temp;
-            temp = temp->next;
-        }
-        if (prev != NULL)
-            prev->next = temp->next;
-        item = temp->value;
-        free(temp);
-    }
+        prev->next = temp->next;
 
+    item = temp->value;
+    free(temp);
     l->size--;
     return item;
 }
@@ -121,7 +113,7 @@ void clearList(linkedlist *l)
     l->head = NULL;
     l->size = 0;
 }
-void traverseLinkedlist(linkedlist *l, void (*func)(typeL *))
+void traverseLinkedlist(linkedlist *l, void (*func)(type *))
 {
     node *temp = l->head;
     while (temp != NULL)
@@ -129,4 +121,32 @@ void traverseLinkedlist(linkedlist *l, void (*func)(typeL *))
         func(&temp->value);
         temp = temp->next;
     }
+}
+void reverseLinkedlist(linkedlist *l)
+{
+    node *prev = NULL;
+    node *temp = l->head;
+    node *next = NULL;
+    while (temp != NULL)
+    {
+        next = temp->next;
+        temp->next = prev;
+        prev = temp;
+        temp = next;
+    }
+    l->head = prev;
+}
+void Search(linkedlist *l, int key)
+{
+    node *temp = l->head;
+    while (temp != NULL)
+    {
+        if (temp->value == key)
+        {
+            printf("Found\n");
+            return;
+        }
+        temp = temp->next;
+    }
+    printf("Not Found\n");
 }

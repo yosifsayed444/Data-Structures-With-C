@@ -8,6 +8,8 @@
     "stdlib.h": "c",
     "global.h": "c",
     "linkedqueue2.h": "c",
-    "linkedqueue1.h": "c"
+    "linkedqueue1.h": "c",
+    "linkedstack1.h": "c",
+    "linkedstack2.h": "c"
   }
 }

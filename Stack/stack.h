@@ -222,7 +222,7 @@ void infixToPostfix(char infix[], char postfix[])
         {
             while (!isstackempty(s) && peekTop(s) != '(')
                 postfix[j++] = pop(&s);
-            pop(&s); // remove '('
+            pop(&s);
         }
         else // operator
         {
