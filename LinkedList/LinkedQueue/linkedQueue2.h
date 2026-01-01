@@ -42,7 +42,7 @@ int isFull(linkedQueue2 *q)
 void enqueue(type data, linkedQueue2 *q)
 {
     node *newNode = createNode(data);
-    if (q->rear == NULL || q->size == 0)
+    if (!q->rear)
     {
         q->front = newNode;
         q->rear = newNode;
@@ -63,7 +63,7 @@ type dequeue(linkedQueue2 *q)
         printf("Queue is empty\n");
         return -1;
     }
-    if (q->size == 1)
+    if (q->front == q->rear)
     {
         type item = q->front->value;
         free(q->front);
@@ -131,8 +131,102 @@ type rear(linkedQueue2 *l)
 {
     if (isEmpty(l))
     {
-        printf("QueuelinkedQueue is empty\n");
+        printf("linkedQueue is empty\n");
         return -1;
     }
     return l->rear->value;
+}
+void searchAndMoveToFront(linkedQueue2 *q, int x)
+{
+    if (!q->front || q->front->value == x)
+        return;
+    node *prev = q->front, *cur = q->front->next;
+    while (cur)
+    {
+        if (cur->value == x)
+        {
+            prev->next = cur->next;
+            cur->next = q->front;
+            q->front = cur;
+            return;
+        }
+        prev = cur;
+        cur = cur->next;
+    }
+}
+void EnqueuePositive_Negative(linkedQueue2 *q, int x)
+{
+    node *p = (node *)malloc(sizeof(node));
+    p->next = NULL;
+    p->value = x;
+    if (!q->rear)
+    {
+        q->front = p;
+        q->rear = p;
+    }
+    else
+    {
+        if (x < 0)
+        {
+            q->rear->next = p;
+            q->rear = p;
+        }
+        else
+        {
+            p->next = q->front;
+            q->front = p;
+        }
+    }
+}
+int searchAndDelete(linkedQueue2 *q, int x)
+{
+    if (!q->front || q->front->value == x)
+        return;
+    node *prev = NULL, *cur = q->front;
+    while (cur && cur->value != x)
+    {
+        prev = cur;
+        cur = cur->next;
+    }
+    if (!prev)
+        q->front = cur->next;
+    else
+        prev->next = cur->next;
+    free(cur);
+    return 1;
+}
+void removeDuplicates(linkedQueue2 *q)
+{
+    if (!q->front)
+        return;
+    node *prev = NULL, *cur = q->front;
+
+    while (cur)
+    {
+        if (cur->value == cur->next->value)
+        {
+            node *temp = cur->next;
+            cur->next = temp->next;
+            free(temp);
+        }
+
+        prev = cur;
+        cur = cur->next;
+    }
+}
+void reverseQueue(linkedQueue2 *q) {
+    node *prev = NULL;
+    node *curr = q->front;
+    node *next;
+
+    q->rear = q->front;
+
+    while (curr) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    q->front = prev;
 }

@@ -1,51 +1,69 @@
 #include <stdio.h>
-#include "tree.h"
+#include "Binary_Search_Tree.h"
 void printNode(int *x)
 {
     printf("%d  ", *x);
 }
 int main()
 {
-    tree *t = create();
-    insert(&t, 45);
-    insert(&t, 15);
-    insert(&t, 79);
-    insert(&t, 90);
-    insert(&t, 10);
-    insert(&t, 55);
-    insert(&t, 12);
-    insert(&t, 20);
-    insert(&t, 50);
-    printf("Preorder: ");
-    Preorder(t, printNode);
-    printf("\n");
+    Tree t;
+    createTree(&t);
 
+    insertItereative(&t, 20);
+    insertItereative(&t, 25);
+    insertItereative(&t, 10);
+    insertItereative(&t, 30);
+    insertItereative(&t, 28);
+    insertItereative(&t, 34);
+    insertItereative(&t, 59);
+    insertItereative(&t, 39);
+    insertItereative(&t, 22);
+    insertItereative(&t, 11);
+    insertItereative(&t, 33);
+    insertRecursive(&t, 17);
+    insertRecursive(&t, 18);
+    insertRecursive(&t, 67);
+    insertRecursive(&t, 21);
     printf("Inorder: ");
     Inorder(t, printNode);
+    printf("\n");
+
+    printf("Preorder: ");
+    Preorder(t, printNode);
     printf("\n");
 
     printf("Postorder: ");
     Postorder(t, printNode);
     printf("\n");
 
-    if (search(t, 40))
-        printf("40 Found!\n");
-    else
-        printf("40 Not Found!\n");
+    printf("Size = %d\n", countNodes(t));
+    printf("Height = %d\n", height(t));
 
-    printf("Min = %d\n", findMin(t)->data);
-    printf("Max = %d\n", findMax(t)->data);
+    int key = 32;
+    if (search(t, key))
+        printf("%d Found!\n", key);
+    else
+        printf("%d Not Found!\n", key);
+
+    int min = findMin(t);
+    int max = findMax(t);
+
+    printf("Min = %d\n", min);
+    printf("Max = %d\n", max);
 
     printf("Leaves = %d\n", countLeaves(t));
     printf("Internal Nodes = %d\n", countInternalNodes(t));
 
-    printf("Size = %d\n", size(t));
-    printf("Height = %d\n", height(t));
+    printf("sum = %d\n", sumNodes(t));
 
-    t = deleteNode(t, 10);
-    printf("Inorder after deleting 10: ");
+    Delete(&t, 25);
+    Delete(&t, 20);
+
+    printf("Inorder after deletion: ");
     Inorder(t, printNode);
     printf("\n");
+    printf("Size = %d\n", size(t));
+    printf("Height = %d\n", height(t));
 
     clear(&t);
 
